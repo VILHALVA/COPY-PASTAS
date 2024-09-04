@@ -49,6 +49,8 @@ class NomeArquivosApp:
                 subdiretorios = [d for d in os.listdir(path_atual) if os.path.isdir(os.path.join(path_atual, d))]
                 if subdiretorios:
                     for subdir in subdiretorios:
+                        if subdir == "System Volume Information":
+                            continue
                         novo_path_relativo = os.path.join(path_relativo, subdir)
                         listar_diretorios(os.path.join(path_atual, subdir), novo_path_relativo)
                 else:
