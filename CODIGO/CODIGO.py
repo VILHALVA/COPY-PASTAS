@@ -1,6 +1,7 @@
 import os
 import tkinter as tk
 from tkinter import filedialog
+import unicodedata
 
 class NomeArquivosApp:
     def __init__(self, root):
@@ -57,12 +58,11 @@ class NomeArquivosApp:
                     directory_list.append(path_relativo.replace(os.path.sep, '/'))
 
             listar_diretorios(dir_path)
-
-            directory_list.sort()
+            directory_list.sort(key=lambda s: unicodedata.normalize('NFKD', s).encode('ASCII', 'ignore').decode('ASCII'))
 
             formatted_list = [f"{str(index + 1).zfill(2)} - {path}" for index, path in enumerate(directory_list)]
             names_str = '\n'.join(formatted_list)
-            
+
             self.text_area.delete("1.0", tk.END)
             self.text_area.insert(tk.END, names_str)
 
