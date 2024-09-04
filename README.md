@@ -12,12 +12,20 @@ O aplicativo "COPY PASTAS" é uma ferramenta simples e intuitiva criada com a bi
 
 2. **Gerar Lista de Diretórios**:
    - **Botão "GERAR"**: Após a seleção do diretório, este botão processa a estrutura de diretórios e subdiretórios a partir do diretório selecionado. A aplicação lista apenas os caminhos completos dos subdiretórios e os diretórios que não possuem subdiretórios.
+   - **Durante a Geração:** O aplicativo desconsidera a pasta `System Volume Information` e ignora acentos nos nomes dos diretórios.
 
 3. **Copiar para a Área de Transferência**:
    - **Botão "COPIAR"**: Copia a lista formatada de caminhos de diretórios que foi gerada para a área de transferência do sistema operacional, permitindo fácil colagem em outros aplicativos.
 
 4. **Limpar Texto**:
    - **Botão "LIMPAR"**: Limpa o conteúdo da área de texto onde os caminhos dos diretórios são exibidos.
+
+## POR QUE CRIEI ESTE APP?
+Após usar o [DRIVESORT](https://www.anerty.net/software/file/DriveSort/) para manter a ordem dos diretórios e subdiretórios do meu PC em sistemas embarcados, percebi a necessidade de criar um novo aplicativo que armazenasse e listasse os nomes desses diretórios em ordem.
+
+Eu utilizo meus pendrives em diversos sistemas embarcados, como caixas de som e DVDs, que geralmente não têm tela, apenas saídas de áudio. Isso tornava cansativo ter que adivinhar ou memorizar o número dos diretórios de cada álbum.
+
+Com este aplicativo, agora posso facilmente localizar o número do álbum que desejo acessar no sistema embarcado, tornando o processo rápido e prático.
 
 ## COMO USAR?
 1. **Inicie o Aplicativo**:
@@ -37,13 +45,6 @@ O aplicativo "COPY PASTAS" é uma ferramenta simples e intuitiva criada com a bi
 
 5. **Limpe o Texto**:
    - Se precisar começar de novo ou simplesmente limpar a área de texto, clique no botão "LIMPAR".
-
-## POR QUE CRIEI ESTE APP?
-Após usar o [DRIVESORT](https://www.anerty.net/software/file/DriveSort/) para manter a ordem dos diretórios e subdiretórios do meu PC em sistemas embarcados, percebi a necessidade de criar um novo aplicativo que armazenasse e listasse os nomes desses diretórios em ordem.
-
-Eu utilizo meus pendrives em diversos sistemas embarcados, como caixas de som e DVDs, que geralmente não têm tela, apenas saídas de áudio. Isso tornava cansativo ter que adivinhar ou memorizar o número dos diretórios de cada álbum.
-
-Com este aplicativo, agora posso facilmente localizar o número do álbum que desejo acessar no sistema embarcado, tornando o processo rápido e prático.
 
 ## NÃO SABE?
 - Entendemos que para manipular arquivos em muitas linguagens, é necessário possuir conhecimento nessas áreas. Para auxiliar nesse aprendizado, oferecemos cursos gratuitos disponíveis:
