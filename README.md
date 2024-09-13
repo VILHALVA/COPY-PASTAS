@@ -13,7 +13,7 @@ O aplicativo "COPY PASTAS" é uma ferramenta simples e intuitiva, criada com a b
 2. **Gerar Lista de Diretórios com Contagem de Músicas**:
    - **Botão "GERAR"**: Após a seleção do diretório, este botão processa a estrutura de diretórios e subdiretórios a partir do diretório selecionado. O aplicativo lista os diretórios e subdiretórios, informando também a quantidade de arquivos `.mp3` contidos em cada um, além de organizar os diretórios com uma numeração que facilita a navegação por sistemas embarcados de seleção de faixas.
    - **Formato da Listagem**:
-     - Cada linha é formatada da seguinte maneira: `{01 - 01} - PASTA/SUBPASTA {X MÚSICAS}`, onde a primeira seção indica a numeração do diretório, a segunda é o nome do diretório, e a terceira entre `{}` indica a quantidade de músicas no diretório.
+     - Cada linha é formatada da seguinte maneira: `{01 - 01} <-> PASTA/SUBPASTA <-> {X MÚSICAS}`, onde a primeira seção indica a numeração do diretório, a segunda é o nome do diretório, e a terceira entre `{}` indica a quantidade de músicas no diretório.
    - **Exemplo**: 
      ```
      {01 - 01} <-> PASTA 1/SUBPASTA 1 <-> {5 MÚSICAS}
