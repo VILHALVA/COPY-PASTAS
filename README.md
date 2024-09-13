@@ -1,7 +1,7 @@
 # COPY PASTAS
 🎈COPIE O NOME DE TODOS OS DIRETÓRIOS E SUBDIRETÓRIOS.
 
-<img src="FOTO.png" align="center" width="500"> <br>
+<img src="IMAGEM.png" align="center" width="500"> <br>
 
 ## DESCRIÇÃO:
 O aplicativo "COPY PASTAS" é uma ferramenta simples e intuitiva, criada com a biblioteca Tkinter em Python, para listar e gerenciar caminhos de diretórios e subdiretórios, exibindo a quantidade de arquivos `.mp3` em cada pasta. Além disso, o aplicativo oferece estatísticas detalhadas sobre a quantidade de pastas, músicas e o espaço de armazenamento usado, livre e total do diretório selecionado. A principal funcionalidade é listar os caminhos dos diretórios de um caminho raiz selecionado e exibi-los de forma organizada, incluindo o número de músicas em cada diretório, permitindo fácil cópia desses caminhos para a área de transferência.

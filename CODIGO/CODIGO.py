@@ -90,7 +90,7 @@ class NomeArquivosApp:
 
             estatisticas = f"""
 ==========================================
-            ESTATITISTICAS:
+            ESTATÍSTICAS:
 ------------------------------------------
 TOTAL DE PASTAS: {len(directory_list)}
 TOTAL DE MUSICAS: {total_musicas}
