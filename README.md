@@ -1,10 +1,10 @@
 # COPY PASTAS
 🎈COPIE O NOME DE TODOS OS DIRETÓRIOS E SUBDIRETÓRIOS.
 
-<img src="IMAGEM.png" align="center" width="500"> <br>
+<img src="FOTO.png" align="center" width="500"> <br>
 
 ## DESCRIÇÃO:
-O aplicativo "COPY PASTAS" é uma ferramenta simples e intuitiva criada com a biblioteca Tkinter em Python para listar e gerenciar caminhos de diretórios e subdiretórios, exibindo a quantidade de arquivos `.mp3` em cada pasta. A principal funcionalidade é listar os caminhos dos diretórios de um caminho raiz selecionado e exibi-los de forma organizada, incluindo o número de músicas em cada diretório, permitindo fácil cópia desses caminhos para a área de transferência.
+O aplicativo "COPY PASTAS" é uma ferramenta simples e intuitiva, criada com a biblioteca Tkinter em Python, para listar e gerenciar caminhos de diretórios e subdiretórios, exibindo a quantidade de arquivos `.mp3` em cada pasta. Além disso, o aplicativo oferece estatísticas detalhadas sobre a quantidade de pastas, músicas e o espaço de armazenamento usado, livre e total do diretório selecionado. A principal funcionalidade é listar os caminhos dos diretórios de um caminho raiz selecionado e exibi-los de forma organizada, incluindo o número de músicas em cada diretório, permitindo fácil cópia desses caminhos para a área de transferência.
 
 ## FUNCIONALIDADES:
 1. **Selecionar Diretório**:
@@ -12,7 +12,7 @@ O aplicativo "COPY PASTAS" é uma ferramenta simples e intuitiva criada com a bi
 
 2. **Gerar Lista de Diretórios com Contagem de Músicas**:
    - **Botão "GERAR"**: Após a seleção do diretório, este botão processa a estrutura de diretórios e subdiretórios a partir do diretório selecionado. O aplicativo lista os diretórios e subdiretórios, informando também a quantidade de arquivos `.mp3` contidos em cada um, além de organizar os diretórios com uma numeração que facilita a navegação por sistemas embarcados de seleção de faixas.
-   - **Formato da Listagem**: 
+   - **Formato da Listagem**:
      - Cada linha é formatada da seguinte maneira: `{01 - 01} - PASTA/SUBPASTA {X MÚSICAS}`, onde a primeira seção indica a numeração do diretório, a segunda é o nome do diretório, e a terceira entre `{}` indica a quantidade de músicas no diretório.
    - **Exemplo**: 
      ```
@@ -23,10 +23,31 @@ O aplicativo "COPY PASTAS" é uma ferramenta simples e intuitiva criada com a bi
      ```
    - **Durante a Geração**: O aplicativo desconsidera a pasta `System Volume Information` e ignora acentos nos nomes dos diretórios.
 
-3. **Copiar para a Área de Transferência**:
-   - **Botão "COPIAR"**: Copia a lista formatada de caminhos de diretórios, junto com a quantidade de músicas, para a área de transferência do sistema operacional, permitindo fácil colagem em outros aplicativos.
+3. **Exibir Estatísticas**:
+   - **Memória Total, Usada e Livre**: Após a geração da lista de diretórios e subdiretórios, o aplicativo exibe informações sobre o armazenamento do diretório selecionado (no caso de ser uma unidade removível como um pendrive). As seguintes estatísticas são exibidas:
+     - **TOTAL DE PASTAS**: Quantidade de pastas/subpastas encontradas.
+     - **TOTAL DE MÚSICAS**: Quantidade total de arquivos `.mp3`.
+     - **MEMÓRIA USADA**: Espaço utilizado no dispositivo.
+     - **MEMÓRIA LIVRE**: Espaço disponível.
+     - **TOTAL DE MEMÓRIA**: Capacidade total do dispositivo.
+   - **Formato das Estatísticas**:
+     ```
+     ============================================
+                 ESTATÍSTICAS:
+     --------------------------------------------
+     TOTAL DE PASTAS: 10
+     TOTAL DE MÚSICAS: 171
+     MEMÓRIA USADA: 5955 MB
+     MEMÓRIA LIVRE: 2108 MB
+     TOTAL DE MEMÓRIA: 8064 MB
+     ---------------------------------------------
+     =============================================
+     ```
 
-4. **Limpar Texto**:
+4. **Copiar para a Área de Transferência**:
+   - **Botão "COPIAR"**: Copia a lista formatada de caminhos de diretórios, junto com a quantidade de músicas e estatísticas de armazenamento, para a área de transferência do sistema operacional, permitindo fácil colagem em outros aplicativos.
+
+5. **Limpar Texto**:
    - **Botão "LIMPAR"**: Limpa o conteúdo da área de texto onde os caminhos dos diretórios e as contagens de músicas são exibidos.
 
 ## POR QUE CRIEI ESTE APP?
@@ -47,8 +68,9 @@ Com este aplicativo, agora posso facilmente localizar o número do álbum que de
    - Clique no botão "SELECIONAR" para abrir uma janela de seleção de diretório. Navegue até o diretório base desejado e selecione-o. O caminho selecionado aparecerá no campo de entrada de texto.
 
 3. **Gerar a Lista de Diretórios com Contagem de Músicas**:
-   - Clique no botão "GERAR" para processar o diretório selecionado. O aplicativo percorrerá todos os subdiretórios e exibirá uma lista numerada no campo de texto principal. Cada linha representará o caminho completo dos subdiretórios, incluindo a quantidade de arquivos `.mp3` em cada um. O formato será `{01 - XX} - PASTA/SUBPASTA {X MÚSICAS}`, onde `XX` indica o número da primeira faixa do próximo diretório.
-
+   - Clique no botão **"GERAR"** para processar o diretório selecionado. O aplicativo percorrerá todos os subdiretórios e exibirá uma lista numerada no campo de texto principal. Cada linha representará o caminho completo dos subdiretórios, incluindo a quantidade de arquivos `.mp3` em cada um. 
+   - O formato da listagem será `{01 - XX} <-> PASTA/SUBPASTA <-> {X MÚSICAS}` com as estatísticas logo abaixo.
+    
 4. **Copie a Lista**:
    - Após a geração da lista, clique no botão "COPIAR" para copiar o conteúdo da área de texto para a área de transferência. Isso permitirá que você cole os caminhos em outro aplicativo ou documento.
 
