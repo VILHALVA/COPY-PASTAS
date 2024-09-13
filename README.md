@@ -16,10 +16,10 @@ O aplicativo "COPY PASTAS" é uma ferramenta simples e intuitiva, criada com a b
      - Cada linha é formatada da seguinte maneira: `{01 - 01} - PASTA/SUBPASTA {X MÚSICAS}`, onde a primeira seção indica a numeração do diretório, a segunda é o nome do diretório, e a terceira entre `{}` indica a quantidade de músicas no diretório.
    - **Exemplo**: 
      ```
-     {01 - 01} - PASTA 1/SUBPASTA 1 {5 MÚSICAS}
-     {02 - 06} - PASTA 1/SUBPASTA 2 {2 MÚSICAS}
-     {03 - 08} - PASTA 2/SUBPASTA {5 MÚSICAS}
-     {04 - 13} - PASTA 3 {2 MÚSICAS}
+     {01 - 01} <-> PASTA 1/SUBPASTA 1 <-> {5 MÚSICAS}
+     {02 - 06} <-> PASTA 1/SUBPASTA 2 <-> {2 MÚSICAS}
+     {03 - 08} <-> PASTA 2/SUBPASTA <-> {5 MÚSICAS}
+     {04 - 13} <-> PASTA 3 <-> {2 MÚSICAS}
      ```
    - **Durante a Geração**: O aplicativo desconsidera a pasta `System Volume Information` e ignora acentos nos nomes dos diretórios.
 
