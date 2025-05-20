@@ -191,6 +191,5 @@ Você pode adicionar customizações ao seu instalador, como adicionar telas per
 * [CONFIRA MAIS CURSOS](https://github.com/VILHALVA?tab=repositories&q=+topic:CURSO)
 
 ## CREDITOS:
-- [PROJETO BASEADO NO "COPY NAME"](https://github.com/VILHALVA/COPY-NAME)
-- [PROJETO FEITO PELO VILHALVA](https://github.com/VILHALVA)
+- [PROJETO CRIADO PELO VILHALVA](https://github.com/VILHALVA)
 
