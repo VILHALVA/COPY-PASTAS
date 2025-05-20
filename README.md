@@ -21,23 +21,21 @@ O aplicativo "COPY PASTAS" é uma ferramenta simples e intuitiva, criada com a b
 3. **Gerar Lista de Diretórios e Arquivos**:
    * **Botão "GERAR"**: Processa a estrutura do diretório e lista os arquivos conforme o tipo selecionado. Organiza os diretórios com numeração padronizada.
    * **Formato da Listagem**:
-
-     * Para MP3 ou TODOS: `{01 - 01} <-> PASTA/SUBPASTA <-> {X MÚSICAS}` ou `{X ARQUIVOS}`
+     * Para MP3 ou TODOS: `{01 - 01} <-> PASTA/SUBPASTA <-> {X MUSICAS}` ou `{X ARQUIVOS}`
    * **Exemplo**:
 
      ```
-     {01 - 01} <-> PASTA 1/SUBPASTA 1 <-> {5 MÚSICAS}
-     {02 - 06} <-> PASTA 1/SUBPASTA 2 <-> {2 MÚSICAS}
-     {03 - 08} <-> PASTA 2/SUBPASTA <-> {5 MÚSICAS}
-     {04 - 13} <-> PASTA 3 <-> {2 MÚSICAS}
+     {01 - 01} <-> PASTA 1/SUBPASTA 1 <-> {5 MUSICAS}
+     {02 - 06} <-> PASTA 1/SUBPASTA 2 <-> {2 MUSICAS}
+     {03 - 08} <-> PASTA 2/SUBPASTA <-> {5 MUSICAS}
+     {04 - 13} <-> PASTA 3 <-> {2 MUSICAS}
      ```
    * Ignora acentos nos nomes e a pasta `System Volume Information`.
 
 4. **Exibir Estatísticas**:
    * Após a geração da lista, exibe:
-
      * **TOTAL DE PASTAS**: Número total de pastas.
-     * **TOTAL DE MÚSICAS/ARQUIVOS**: Conforme o tipo selecionado.
+     * **TOTAL DE MUSICAS/ARQUIVOS**: Conforme o tipo selecionado.
      * **MEMÓRIA USADA, LIVRE e TOTAL**: Informações da unidade de armazenamento.
    * **Formato**:
 
@@ -88,7 +86,7 @@ Eu utilizo meus pendrives em diversos sistemas embarcados, como caixas de som e 
    * Clique no botão **"GERAR"** para processar o diretório. O aplicativo percorrerá os subdiretórios e exibirá a listagem conforme o tipo selecionado. Para MP3 ou TODOS, cada linha exibirá a contagem de arquivos:
 
      ```
-     {01 - XX} <-> PASTA/SUBPASTA <-> {X MÚSICAS/ARQUIVOS}
+     {01 - XX} <-> PASTA/SUBPASTA <-> {X MUSICAS/ARQUIVOS}
      ```
    * Abaixo da listagem, serão exibidas as estatísticas de pastas, arquivos e armazenamento.
 
