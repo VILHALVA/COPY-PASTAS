@@ -4,59 +4,74 @@
 <img src="FOTO.png" align="center" width="500"> <br>
 
 ## DESCRIÇÃO:
-O aplicativo "COPY PASTAS" é uma ferramenta simples e intuitiva, criada com a biblioteca Tkinter em Python, para listar e gerenciar caminhos de diretórios e subdiretórios, exibindo a quantidade de arquivos em cada pasta. O usuário pode escolher entre quatro tipos de exibição: apenas arquivos `.mp3`, todos os arquivos (incluindo `.mp3`), nomes em formato JSON ou TXT. Além disso, o aplicativo oferece estatísticas detalhadas sobre a quantidade de pastas, arquivos e o espaço de armazenamento usado, livre e total do diretório selecionado. A principal funcionalidade é listar os caminhos dos diretórios de um caminho raiz e exibi-los de forma organizada, permitindo fácil cópia para a área de transferência.
+O aplicativo **"COPY PASTAS"** é uma ferramenta simples e intuitiva, criada com a biblioteca **Tkinter** em Python, para listar e gerenciar caminhos de diretórios e subdiretórios, exibindo a quantidade de arquivos em cada pasta. O usuário pode escolher entre quatro tipos de exibição: apenas arquivos `.mp3`, todos os arquivos (incluindo `.mp3`), nomes em formato JSON ou TXT.
+
+Além disso, o aplicativo oferece:
+
+* Estatísticas detalhadas sobre a quantidade de pastas, arquivos e o espaço de armazenamento usado, livre e total do diretório selecionado.
+* Comportamento inteligente dos botões: **"GERAR"** só é habilitado após a seleção de um diretório, e os botões **"LIMPAR"** e **"COLAR"** são ativados apenas após a geração do texto.
+* O botão **"COPIAR"** exibe uma notificação visual do sistema (Windows/Linux) informando que o conteúdo foi copiado para a área de transferência.
+
+A principal funcionalidade é listar os caminhos dos diretórios de um caminho raiz e exibi-los de forma organizada, permitindo fácil cópia para a área de transferência.
 
 ## FUNCIONALIDADES:
-1. **Selecionar Diretório**:
+1. **Selecionar Diretório**
    * **Botão "SELECIONAR"**: Abre uma janela para o usuário escolher o diretório base. O caminho é exibido em um campo de texto.
 
-2. **Escolher Tipo de Arquivo**:
+2. **Escolher Tipo de Arquivo**
    * **Botões de Seleção (MP3, TODOS, JSON, TXT)**: Permitem definir como os arquivos serão listados:
+      * **MP3**: Lista apenas arquivos `.mp3`.
+      * **TODOS**: Lista todos os arquivos, inclusive `.mp3`.
+      * **JSON**: Exibe somente os nomes (sem caminhos) em formato de array JSON.
+      * **TXT**: Exibe somente os nomes (sem caminhos) como lista simples de texto.
 
-     * **MP3**: Lista apenas arquivos `.mp3`.
-     * **TODOS**: Lista todos os arquivos, inclusive `.mp3`.
-     * **JSON**: Exibe somente os nomes (sem caminhos) em formato de array JSON.
-     * **TXT**: Exibe somente os nomes (sem caminhos) como lista simples de texto.
+3. **Gerar Lista de Diretórios e Arquivos**
+   * **Botão "GERAR"**:
+      * Fica desabilitado até um diretório ser selecionado.
+      * Processa a estrutura do diretório e lista os arquivos conforme o tipo selecionado.
+      * Organiza os diretórios com numeração padronizada.
+      * **Formato da Listagem** (MP3 ou TODOS):
+      `{01 - 01} <-> PASTA/SUBPASTA <-> {X MUSICAS}` ou `{X ARQUIVOS}`
+      * **Exemplo**:
 
-3. **Gerar Lista de Diretórios e Arquivos**:
-   * **Botão "GERAR"**: Processa a estrutura do diretório e lista os arquivos conforme o tipo selecionado. Organiza os diretórios com numeração padronizada.
-   * **Formato da Listagem**:
-     * Para MP3 ou TODOS: `{01 - 01} <-> PASTA/SUBPASTA <-> {X MUSICAS}` ou `{X ARQUIVOS}`
-   * **Exemplo**:
+      ```
+      {01 - 01} <-> PASTA 1/SUBPASTA 1 <-> {5 MUSICAS}
+      {02 - 06} <-> PASTA 1/SUBPASTA 2 <-> {2 MUSICAS}
+      {03 - 08} <-> PASTA 2/SUBPASTA <-> {5 MUSICAS}
+      {04 - 13} <-> PASTA 3 <-> {2 MUSICAS}
+      ```
+      * Ignora acentos nos nomes e a pasta `System Volume Information`.
 
-     ```
-     {01 - 01} <-> PASTA 1/SUBPASTA 1 <-> {5 MUSICAS}
-     {02 - 06} <-> PASTA 1/SUBPASTA 2 <-> {2 MUSICAS}
-     {03 - 08} <-> PASTA 2/SUBPASTA <-> {5 MUSICAS}
-     {04 - 13} <-> PASTA 3 <-> {2 MUSICAS}
-     ```
-   * Ignora acentos nos nomes e a pasta `System Volume Information`.
-
-4. **Exibir Estatísticas**:
+4. **Exibir Estatísticas**
    * Após a geração da lista, exibe:
-     * **TOTAL DE PASTAS**: Número total de pastas.
-     * **TOTAL DE MUSICAS/ARQUIVOS**: Conforme o tipo selecionado.
-     * **MEMÓRIA USADA, LIVRE e TOTAL**: Informações da unidade de armazenamento.
+
+   * **TOTAL DE PASTAS**
+   * **TOTAL DE MUSICAS/ARQUIVOS** (conforme o tipo selecionado)
+   * **MEMÓRIA USADA, LIVRE e TOTAL** da unidade de armazenamento
    * **Formato**:
 
-     ```
-     ==========================================
-                 ESTATÍSTICAS:
-     ------------------------------------------
-     TOTAL DE PASTAS: 10
-     TOTAL DE ARQUIVOS: 171
-     MEMÓRIA USADA: 5955 MB
-     MEMÓRIA LIVRE: 2108 MB
-     TOTAL DE MEMÓRIA: 8064 MB
-     ------------------------------------------
-     ==========================================
-     ```
+   ```
+   ==========================================
+               ESTATÍSTICAS:
+   ------------------------------------------
+   TOTAL DE PASTAS: 10
+   TOTAL DE ARQUIVOS: 171
+   MEMÓRIA USADA: 5955 MB
+   MEMÓRIA LIVRE: 2108 MB
+   TOTAL DE MEMÓRIA: 8064 MB
+   ------------------------------------------
+   ==========================================
+   ```
 
-5. **Copiar para a Área de Transferência**:
-   * **Botão "COPIAR"**: Copia o conteúdo da área de texto (lista e estatísticas) para a área de transferência.
+5. **Copiar para a Área de Transferência**
+   * **Botão "COPIAR"**:
+      * Copia o conteúdo da área de texto (lista + estatísticas).
+      * Exibe a mensagem do sistema informando que o conteúdo foi copiado com sucesso (notificação nativa do Windows ou Linux).
 
-6. **Limpar Texto**:
-   * **Botão "LIMPAR"**: Apaga o conteúdo atual exibido na tela.
+6. **Limpar Texto**
+   * **Botão "LIMPAR"**:
+      * Apaga o conteúdo atual exibido na tela.
+      * Só é ativado após a geração do texto.
 
 ## POR QUE CRIEI ESTE APP?
 Após usar o [DRIVESORT](https://www.anerty.net/software/file/DriveSort/) para manter a ordem dos diretórios e subdiretórios do meu PC em sistemas embarcados, percebi a necessidade de criar um novo aplicativo que armazenasse e listasse os nomes desses diretórios em ordem.
@@ -73,6 +88,7 @@ Eu utilizo meus pendrives em diversos sistemas embarcados, como caixas de som e 
 
 2. **Selecione o Diretório**:
    * Clique no botão **"SELECIONAR"** para abrir a janela de escolha de diretório. Selecione o diretório base desejado. O caminho será exibido no campo de entrada.
+   * O botão **"GERAR"** só será habilitado após a seleção de um diretório válido.
 
 3. **Escolha o Tipo de Listagem**:
    * Antes de gerar a lista, selecione o tipo de conteúdo que deseja listar usando um dos botões:
@@ -83,18 +99,26 @@ Eu utilizo meus pendrives em diversos sistemas embarcados, como caixas de som e 
      * **TXT**: Apenas os nomes dos arquivos em formato de lista simples (um por linha).
 
 4. **Gerar a Lista**:
-   * Clique no botão **"GERAR"** para processar o diretório. O aplicativo percorrerá os subdiretórios e exibirá a listagem conforme o tipo selecionado. Para MP3 ou TODOS, cada linha exibirá a contagem de arquivos:
+   * Clique no botão **"GERAR"** para processar o diretório. O aplicativo percorrerá os subdiretórios e exibirá a listagem conforme o tipo selecionado.
+   * Para MP3 ou TODOS, cada linha exibirá a contagem de arquivos no formato:
 
      ```
      {01 - XX} <-> PASTA/SUBPASTA <-> {X MUSICAS/ARQUIVOS}
      ```
-   * Abaixo da listagem, serão exibidas as estatísticas de pastas, arquivos e armazenamento.
+   * Abaixo da listagem, serão exibidas as estatísticas de:
+
+     * Total de pastas
+     * Total de arquivos (ou músicas)
+     * Espaço usado, livre e total do armazenamento
+   * Os botões **"LIMPAR"** e **"COLAR"** só serão habilitados após essa geração.
 
 5. **Copie a Lista**:
    * Após a geração, clique no botão **"COPIAR"** para copiar todo o conteúdo exibido (lista e estatísticas) para a área de transferência.
+   * Uma notificação do sistema (Windows ou Linux) será exibida informando que o conteúdo foi copiado com sucesso.
 
 6. **Limpe o Texto**:
    * Para limpar a área de texto e começar novamente, clique no botão **"LIMPAR"**.
+   * Esse botão ficará habilitado somente após a geração da lista.
 
 ## SOBRE O EXECUTAVEL E O INSTALADOR:
 ### 1. EXECUTANDO:

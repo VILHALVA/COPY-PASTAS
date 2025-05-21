@@ -1,8 +1,9 @@
 import os
 import tkinter as tk
-from tkinter import filedialog
+from tkinter import filedialog, messagebox
 import unicodedata
 import ctypes
+import platform
 
 class NomeArquivosApp:
     def __init__(self, root):
@@ -18,11 +19,14 @@ class NomeArquivosApp:
         self.entry_dir = tk.Entry(root, textvariable=self.dir_path, state="readonly", width=40)
         self.entry_dir.pack(pady=5)
 
-        self.btn_select_dir = tk.Button(root, text="SELECIONAR", command=self.select_directory)
-        self.btn_select_dir.pack(pady=10)
+        dir_frame = tk.Frame(root)
+        dir_frame.pack(pady=5)
 
-        self.btn_generate = tk.Button(root, text="GERAR", command=self.generate_names)
-        self.btn_generate.pack(pady=10)
+        self.btn_select_dir = tk.Button(dir_frame, text="SELECIONAR", command=self.select_directory)
+        self.btn_select_dir.pack(side=tk.LEFT, padx=5)
+
+        self.btn_generate = tk.Button(dir_frame, text="GERAR", command=self.generate_names, state=tk.DISABLED)
+        self.btn_generate.pack(side=tk.LEFT, padx=5)
 
         self.tipo = tk.StringVar(value="MP3")
         tipos = ["MP3", "TODOS", "JSON", "TXT"]
@@ -34,11 +38,14 @@ class NomeArquivosApp:
         self.text_area = tk.Text(root, wrap="word", height=15, width=50)
         self.text_area.pack(pady=10)
 
-        self.btn_copy = tk.Button(root, text="COPIAR", command=self.copy_names)
-        self.btn_copy.pack(side=tk.TOP, padx=5)
+        button_frame = tk.Frame(root)
+        button_frame.pack(pady=5)
 
-        self.btn_clear = tk.Button(root, text="LIMPAR", command=self.clear_text)
-        self.btn_clear.pack(side=tk.TOP, padx=5)
+        self.btn_copy = tk.Button(button_frame, text="COPIAR", command=self.copy_names, state=tk.DISABLED)
+        self.btn_copy.pack(side=tk.LEFT, padx=5)
+
+        self.btn_clear = tk.Button(button_frame, text="LIMPAR", command=self.clear_text, state=tk.DISABLED)
+        self.btn_clear.pack(side=tk.LEFT, padx=5)
 
         self.footer_label = tk.Label(root, text="APP CRIADO PELO VILHALVA\nGITHUB: @VILHALVA", bg="gray", fg="white", height=2)
         self.footer_label.pack(side=tk.BOTTOM, fill=tk.X)
@@ -49,6 +56,7 @@ class NomeArquivosApp:
         dir_path = filedialog.askdirectory()
         if dir_path:
             self.dir_path.set(dir_path)
+            self.btn_generate.config(state=tk.NORMAL)
 
     def generate_names(self):
         tipo = self.tipo.get()
@@ -56,17 +64,17 @@ class NomeArquivosApp:
         self.text_area.delete("1.0", tk.END)
 
         if not os.path.isdir(dir_path):
+            messagebox.showwarning("Aviso", "Por favor, selecione um diretório válido.")
             return
 
-        if tipo == "JSON" or tipo == "TXT":
+        if tipo in ["JSON", "TXT"]:
             file_names = [os.path.splitext(name)[0] for name in os.listdir(dir_path)]
-            if tipo == "JSON":
-                content = '[\n' + ', '.join([f'"{name}"' for name in file_names]) + '\n];'
-            else:  
-                content = '\n'.join(file_names)
+            content = '[\n' + ', '.join([f'"{name}"' for name in file_names]) + '\n];' if tipo == "JSON" else '\n'.join(file_names)
             self.text_area.insert(tk.END, content)
+            self.btn_copy.config(state=tk.NORMAL)
+            self.btn_clear.config(state=tk.NORMAL)
             return
-        
+
         directory_list = []
         faixa_inicial = 1
         total_musicas = 0
@@ -82,7 +90,7 @@ class NomeArquivosApp:
             subdirs = [d for d in os.listdir(path_atual) if os.path.isdir(os.path.join(path_atual, d))]
             if subdirs:
                 for subdir in subdirs:
-                    if subdir == "System Volume Information":
+                    if subdir.lower() == "system volume information":
                         continue
                     novo_path = os.path.join(path_relativo, subdir)
                     listar_diretorios(os.path.join(path_atual, subdir), novo_path)
@@ -117,6 +125,8 @@ class NomeArquivosApp:
         result_text = '\n'.join(formatted_list)
 
         def get_drive_space(folder):
+            if platform.system() != "Windows":
+                return 0, 0, 0
             _, total_bytes, free_bytes = ctypes.c_ulonglong(), ctypes.c_ulonglong(), ctypes.c_ulonglong()
             ctypes.windll.kernel32.GetDiskFreeSpaceExW(ctypes.c_wchar_p(folder), ctypes.byref(_), ctypes.byref(total_bytes), ctypes.byref(free_bytes))
             total = total_bytes.value // (1024 ** 2)
@@ -138,6 +148,8 @@ TOTAL DE MEMORIA: {total_memoria} MB
 ==========================================
 """
         self.text_area.insert(tk.END, result_text + '\n' + estatisticas)
+        self.btn_copy.config(state=tk.NORMAL)
+        self.btn_clear.config(state=tk.NORMAL)
 
     def copy_names(self):
         names = self.text_area.get("1.0", tk.END)
@@ -145,8 +157,12 @@ TOTAL DE MEMORIA: {total_memoria} MB
         self.root.clipboard_append(names)
         self.root.update()
 
+        messagebox.showinfo("Copiado", "Texto copiado para a área de transferência.")
+
     def clear_text(self):
         self.text_area.delete("1.0", tk.END)
+        self.btn_copy.config(state=tk.DISABLED)
+        self.btn_clear.config(state=tk.DISABLED)
 
 if __name__ == "__main__":
     root = tk.Tk()
