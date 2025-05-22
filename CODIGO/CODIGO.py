@@ -137,7 +137,7 @@ class NomeArquivosApp:
         total_memoria, memoria_livre, memoria_usada = get_drive_space(dir_path)
         estatisticas = f"""
 ==========================================
-            ESTATÍSTICAS:
+            ESTATISTICAS:
 ------------------------------------------
 TOTAL DE PASTAS: {len(directory_list)}
 {"TOTAL DE MUSICAS" if tipo == "MP3" else "TOTAL DE ARQUIVOS"}: {total_musicas if tipo == "MP3" else total_arquivos}

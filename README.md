@@ -52,7 +52,7 @@ A principal funcionalidade é listar os caminhos dos diretórios de um caminho r
 
    ```
    ==========================================
-               ESTATÍSTICAS:
+               ESTATISTICAS:
    ------------------------------------------
    TOTAL DE PASTAS: 10
    TOTAL DE ARQUIVOS: 171
