@@ -77,18 +77,27 @@ Após usar o [DRIVESORT](https://www.anerty.net/software/file/DriveSort/) para m
 Eu utilizo meus pendrives em diversos sistemas embarcados, como caixas de som e DVDs, que geralmente não têm tela, apenas saídas de áudio. Isso tornava cansativo ter que adivinhar ou memorizar o número dos diretórios/faixas de cada álbum.
 
 ## EXECUTANDO O PROJETO:
-1. **Inicie o Aplicativo**:
+1. **Instale as Dependências**:
+Antes de iniciar o aplicativo, é necessário instalar as bibliotecas utilizadas no projeto. No terminal, execute:
+
+```bash
+pip install -r requirements.txt
+```
+
+> 💡 O arquivo `requirements.txt` está localizado dentro da pasta `./CODIGO`.
+
+2. **Inicie o Aplicativo**:
    * Para executar o script Python, navegue até o diretório `./CODIGO` e use o comando:
 
    ```bash
    python CODIGO.py
    ```
 
-2. **Selecione o Diretório**:
+3. **Selecione o Diretório**:
    * Clique no botão **"SELECIONAR"** para abrir a janela de escolha de diretório. Selecione o diretório base desejado. O caminho será exibido no campo de entrada.
    * O botão **"GERAR"** só será habilitado após a seleção de um diretório válido.
 
-3. **Escolha o Tipo de Listagem**:
+4. **Escolha o Tipo de Listagem**:
    * Antes de gerar a lista, selecione o tipo de conteúdo que deseja listar usando um dos botões:
 
      * **MP3**: Apenas arquivos `.mp3`.
@@ -96,7 +105,7 @@ Eu utilizo meus pendrives em diversos sistemas embarcados, como caixas de som e 
      * **JSON**: Apenas os nomes dos arquivos em formato de array JSON.
      * **TXT**: Apenas os nomes dos arquivos em formato de lista simples (um por linha).
 
-4. **Gerar a Lista**:
+5. **Gerar a Lista**:
    * Clique no botão **"GERAR"** para processar o diretório. O aplicativo percorrerá os subdiretórios e exibirá a listagem conforme o tipo selecionado.
    * Para MP3 ou TODOS, cada linha exibirá a contagem de arquivos no formato:
 
@@ -110,11 +119,11 @@ Eu utilizo meus pendrives em diversos sistemas embarcados, como caixas de som e 
      * Espaço usado, livre e total do armazenamento
    * Os botões **"LIMPAR"** e **"COLAR"** só serão habilitados após essa geração.
 
-5. **Copie a Lista**:
+6. **Copie a Lista**:
    * Após a geração, clique no botão **"COPIAR"** para copiar todo o conteúdo exibido (lista e estatísticas) para a área de transferência.
    * Uma notificação do sistema será exibida informando que o conteúdo foi copiado com sucesso.
 
-6. **Limpe o Texto**:
+7. **Limpe o Texto**:
    * Para limpar a área de texto e começar novamente, clique no botão **"LIMPAR"**.
    * Esse botão ficará habilitado somente após a geração da lista.
 
