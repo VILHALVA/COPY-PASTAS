@@ -4,15 +4,13 @@
 <img src="FOTO.png" align="center" width="500"> <br>
 
 ## DESCRIÇÃO:
-O aplicativo **"COPY PASTAS"** é uma ferramenta simples e intuitiva, criada com a biblioteca **Tkinter** em Python, para listar e gerenciar caminhos de diretórios e subdiretórios, exibindo a quantidade de arquivos em cada pasta. O usuário pode escolher entre quatro tipos de exibição: apenas arquivos `.mp3`, todos os arquivos (incluindo `.mp3`), nomes em formato JSON ou TXT.
+O aplicativo **"COPY PASTAS"** é uma ferramenta simples e intuitiva, criada com a biblioteca **CustomTkinter** em Python, para listar e gerenciar caminhos de diretórios e subdiretórios, exibindo a quantidade de arquivos em cada pasta. O usuário pode escolher entre quatro tipos de exibição: apenas arquivos `.mp3`, todos os arquivos (incluindo `.mp3`), nomes em formato JSON ou TXT.
 
 Além disso, o aplicativo oferece:
 
 * Estatísticas detalhadas sobre a quantidade de pastas, arquivos e o espaço de armazenamento usado, livre e total do diretório selecionado.
 * Comportamento inteligente dos botões: **"GERAR"** só é habilitado após a seleção de um diretório, e os botões **"LIMPAR"** e **"COLAR"** são ativados apenas após a geração do texto.
 * O botão **"COPIAR"** exibe uma notificação visual do sistema (Windows/Linux) informando que o conteúdo foi copiado para a área de transferência.
-
-A principal funcionalidade é listar os caminhos dos diretórios de um caminho raiz e exibi-los de forma organizada, permitindo fácil cópia para a área de transferência.
 
 ## FUNCIONALIDADES:
 1. **Selecionar Diretório**
@@ -51,22 +49,22 @@ A principal funcionalidade é listar os caminhos dos diretórios de um caminho r
    * **Formato**:
 
    ```
-   ==========================================
+   =============================
                ESTATISTICAS:
-   ------------------------------------------
+   =============================
    TOTAL DE PASTAS: 10
    TOTAL DE ARQUIVOS: 171
    MEMÓRIA USADA: 5955 MB
    MEMÓRIA LIVRE: 2108 MB
    TOTAL DE MEMÓRIA: 8064 MB
-   ------------------------------------------
-   ==========================================
+   =============================
+   =============================
    ```
 
 5. **Copiar para a Área de Transferência**
    * **Botão "COPIAR"**:
       * Copia o conteúdo da área de texto (lista + estatísticas).
-      * Exibe a mensagem do sistema informando que o conteúdo foi copiado com sucesso (notificação nativa do Windows ou Linux).
+      * Exibe a mensagem do sistema informando que o conteúdo foi copiado com sucesso.
 
 6. **Limpar Texto**
    * **Botão "LIMPAR"**:
@@ -114,7 +112,7 @@ Eu utilizo meus pendrives em diversos sistemas embarcados, como caixas de som e 
 
 5. **Copie a Lista**:
    * Após a geração, clique no botão **"COPIAR"** para copiar todo o conteúdo exibido (lista e estatísticas) para a área de transferência.
-   * Uma notificação do sistema (Windows ou Linux) será exibida informando que o conteúdo foi copiado com sucesso.
+   * Uma notificação do sistema será exibida informando que o conteúdo foi copiado com sucesso.
 
 6. **Limpe o Texto**:
    * Para limpar a área de texto e começar novamente, clique no botão **"LIMPAR"**.
@@ -208,7 +206,7 @@ Você pode adicionar customizações ao seu instalador, como adicionar telas per
 ## NÃO SABE?
 - Entendemos que para manipular arquivos em muitas linguagens, é necessário possuir conhecimento nessas áreas. Para auxiliar nesse aprendizado, oferecemos cursos gratuitos disponíveis:
 * [CURSO DE PYTHON](https://github.com/VILHALVA/CURSO-DE-PYTHON)
-* [CURSO DE TKINTER](https://github.com/VILHALVA/CURSO-DE-TKINTER)
+* [CURSO DE CUSTOMTKINTER](https://github.com/VILHALVA/CURSO-DE-CUSTOMTKINTER)
 * [CURSO DE AUTOMACAO](https://github.com/VILHALVA/CURSO-DE-AUTOMACAO)
 * [CONFIRA MAIS CURSOS](https://github.com/VILHALVA?tab=repositories&q=+topic:CURSO)
 
