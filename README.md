@@ -77,15 +77,11 @@ Após usar o [DRIVESORT](https://www.anerty.net/software/file/DriveSort/) para m
 Eu utilizo meus pendrives em diversos sistemas embarcados, como caixas de som e DVDs, que geralmente não têm tela, apenas saídas de áudio. Isso tornava cansativo ter que adivinhar ou memorizar o número dos diretórios/faixas de cada álbum.
 
 ## EXECUTANDO O PROJETO:
-1. **Instale as Dependências**:
-Antes de iniciar o aplicativo, é necessário instalar as bibliotecas utilizadas no projeto. No terminal, execute:
-
-```bash
-pip install -r requirements.txt
-```
-
-> 💡 O arquivo `requirements.txt` está localizado dentro da pasta `./CODIGO`.
-
+1. **Instale as bibliotecas necessárias:** Antes de executar o app, certifique-se de instalar todas as dependências necessárias. No terminal, execute o seguinte comando para instalar as dependências listadas no arquivo requirements.txt em `CODIGO`:
+   ```bash
+   pip install -r requirements.txt
+   ```
+   
 2. **Inicie o Aplicativo**:
    * Para executar o script Python, navegue até o diretório `./CODIGO` e use o comando:
 
