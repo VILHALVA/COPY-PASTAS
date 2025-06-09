@@ -160,7 +160,7 @@ Eu utilizo meus pendrives em diversos sistemas embarcados, como caixas de som e 
    * Localize a diretiva `#define Diretorio` e substitua pelo caminho correto do diretório do projeto. Exemplo:
 
    ```ini
-   #define Diretorio "C:\Users\HP\Downloads\GITHUB\REPOSITORIO\02-PROJETOS PUBLICOS\02-APLICATIVOS\RENOMEADOR DE ARQUIVOS\CODIGO"
+   #define Diretorio "C:\Users\HP\Downloads\GITHUB\REPOSITORIO\02-PROJETOS PUBLICOS\02-APLICATIVOS\COPY PASTAS\CODIGO"
    ```
 
 2. **Gerar o instalador no Inno Setup:**
