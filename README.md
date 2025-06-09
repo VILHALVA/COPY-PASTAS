@@ -154,30 +154,14 @@ Eu utilizo meus pendrives em diversos sistemas embarcados, como caixas de som e 
 #### PASSO 2: CRIAR O INSTALADOR:
 > **IMPORTANTE:** Antes de criar o novo instalador, certifique-se de excluir o arquivo `./APP/COPY PASTAS.exe`.
 
-1. **Editar o arquivo do instalador**
-   No diretório `./CODIGO`, abra o arquivo `INSTALADOR.iss` e atualize os seguintes trechos:
+1. **Editar o arquivo do instalador:**
+   * No diretório `./CODIGO`, abra o arquivo `INSTALADOR.iss` e atualize o seguinte trecho:
 
-   * **Versão do Aplicativo:**
-      Atualize o valor da linha `MyAppVersion` com a nova versão do aplicativo.Exemplo:
+   * Localize a diretiva `#define Diretorio` e substitua pelo caminho correto do diretório do projeto. Exemplo:
 
-      ```ini
-      #define MyAppVersion "2.0"
-      ```
-
-   * **Ícone do instalador:**
-     Substitua o caminho atual da linha `SetupIconFile=` pelo caminho correto do seu ícone:
-
-     ```ini
-     SetupIconFile=C:\Users\HP\Downloads\GITHUB\REPOSITORIO\02-PROJETOS PUBLICOS\02-APLICATIVOS\COPY PASTAS\CODIGO\imagem.ico
-     ```
-
-   * **Caminho do executável a ser empacotado:**
-     Atualize a seção `[Files]` com o caminho do executável gerado:
-
-     ```ini
-     [Files]
-     Source: "C:\Users\HP\Downloads\GITHUB\REPOSITORIO\02-PROJETOS PUBLICOS\02-APLICATIVOS\COPY PASTAS\CODIGO\dist\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
-     ```
+   ```ini
+   #define Diretorio "C:\Users\HP\Downloads\GITHUB\REPOSITORIO\02-PROJETOS PUBLICOS\02-APLICATIVOS\RENOMEADOR DE ARQUIVOS\CODIGO"
+   ```
 
 2. **Gerar o instalador no Inno Setup:**
    * Abra o arquivo `./CODIGO/INSTALADOR.iss` com o **Inno Setup**.

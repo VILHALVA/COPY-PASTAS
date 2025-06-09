@@ -12,31 +12,20 @@ class NomeArquivosApp:
         self.root = root
         self.root.title("COPY PASTAS")
 
-        self.label_dir = ctk.CTkLabel(
-            root, text="COPY PASTAS", font=("Arial", 32, "bold")
-        )
+        self.label_dir = ctk.CTkLabel(root, text="COPY PASTAS", font=("Arial", 32, "bold"))
         self.label_dir.pack(pady=10)
 
         self.dir_path = ctk.StringVar(value="SELECIONE UM DIRETÓRIO!")
-        self.entry_dir = ctk.CTkEntry(
-            root,
-            textvariable=self.dir_path,
-            state="readonly",
-            justify="center"
-        )
+        self.entry_dir = ctk.CTkEntry(root, textvariable=self.dir_path, state="readonly", justify="center")
         self.entry_dir.pack(fill="x", padx=20, pady=(0, 10))
 
         dir_frame = ctk.CTkFrame(root, fg_color="transparent")
         dir_frame.pack(pady=(0, 10))
 
-        self.btn_select_dir = ctk.CTkButton(
-            dir_frame, text="SELECIONAR", command=self.select_directory
-        )
+        self.btn_select_dir = ctk.CTkButton(dir_frame, text="SELECIONAR", command=self.select_directory)
         self.btn_select_dir.pack(side="left", padx=5)
 
-        self.btn_generate = ctk.CTkButton(
-            dir_frame, text="GERAR", command=self.generate_names, state="disabled"
-        )
+        self.btn_generate = ctk.CTkButton(dir_frame, text="GERAR", command=self.generate_names, state="disabled")
         self.btn_generate.pack(side="left", padx=5)
 
         self.tipo = ctk.StringVar(value="MP3")
@@ -49,22 +38,16 @@ class NomeArquivosApp:
         botoes_frame.pack(anchor="center") 
 
         for t in tipos:
-            ctk.CTkRadioButton(
-                botoes_frame, text=t, variable=self.tipo, value=t
-            ).pack(side="left", padx=10)
+            ctk.CTkRadioButton(botoes_frame, text=t, variable=self.tipo, value=t).pack(side="left", padx=10)
 
         self.text_area = ctk.CTkTextbox(root)
         self.text_area.pack(expand=True, fill="both", padx=20, pady=(0, 10))
 
         button_frame = ctk.CTkFrame(root, fg_color="transparent")
         button_frame.pack(pady=(0, 10))
-        self.btn_copy = ctk.CTkButton(
-            button_frame, text="COPIAR", command=self.copy_names, state="disabled"
-        )
+        self.btn_copy = ctk.CTkButton(button_frame, text="COPIAR", command=self.copy_names, state="disabled")
         self.btn_copy.pack(side="left", padx=5)
-        self.btn_clear = ctk.CTkButton(
-            button_frame, text="LIMPAR", command=self.clear_text, state="disabled"
-        )
+        self.btn_clear = ctk.CTkButton(button_frame, text="LIMPAR", command=self.clear_text, state="disabled")
         self.btn_clear.pack(side="left", padx=5)
 
         self.footer_label = ctk.CTkLabel(
@@ -93,10 +76,10 @@ class NomeArquivosApp:
 
         if tipo in ["JSON", "TXT"]:
             file_names = [
-            os.path.splitext(name)[0]
-            for name in os.listdir(dir_path)
-            if name.lower() != "system volume information"
-        ]
+                os.path.splitext(name)[0]
+                for name in os.listdir(dir_path)
+                if not is_oculto_ou_sistema(os.path.join(dir_path, name))
+            ]
 
             content = '{\n' + ', '.join([f'"{name}"' for name in file_names]) + '\n};' if tipo == "JSON" else '\n'.join(file_names)
             self.text_area.insert("end", content)
@@ -111,23 +94,25 @@ class NomeArquivosApp:
 
         def contar_itens(path):
             if tipo == "MP3":
-                return [f for f in os.listdir(path) if f.lower().endswith('.mp3')]
+                return [
+                    f for f in os.listdir(path)
+                    if f.lower().endswith('.mp3') and not is_oculto_ou_sistema(os.path.join(path, f))
+                ]
             elif tipo == "TODOS":
-                return [f for f in os.listdir(path) if os.path.isfile(os.path.join(path, f))]
+                return [
+                    f for f in os.listdir(path)
+                    if os.path.isfile(os.path.join(path, f)) and not is_oculto_ou_sistema(os.path.join(path, f))
+                ]
 
         def listar_diretorios(path_atual, path_relativo=''):
             subdirs = [
                 d for d in os.listdir(path_atual)
-                if os.path.isdir(os.path.join(path_atual, d))
+                if os.path.isdir(os.path.join(path_atual, d)) and not is_oculto_ou_sistema(os.path.join(path_atual, d))
             ]
             if subdirs:
                 for subdir in subdirs:
-                    if subdir.lower() == "system volume information":
-                        continue
                     novo_path = os.path.join(path_relativo, subdir)
-                    listar_diretorios(
-                        os.path.join(path_atual, subdir), novo_path
-                    )
+                    listar_diretorios(os.path.join(path_atual, subdir), novo_path)
             else:
                 itens = contar_itens(path_atual)
                 directory_list.append(
@@ -232,6 +217,20 @@ class NomeArquivosApp:
         self.text_area.delete("1.0", "end")
         self.btn_copy.configure(state="disabled")
         self.btn_clear.configure(state="disabled")
+
+def is_oculto_ou_sistema(path):
+    if os.name == "nt":  
+        try:
+            atributos = ctypes.windll.kernel32.GetFileAttributesW(str(path))
+            if atributos == -1:
+                return False
+            FILE_ATTRIBUTE_HIDDEN = 0x2
+            FILE_ATTRIBUTE_SYSTEM = 0x4
+            return bool(atributos & (FILE_ATTRIBUTE_HIDDEN | FILE_ATTRIBUTE_SYSTEM))
+        except Exception:
+            return False
+    else: 
+        return os.path.basename(path).startswith(".")
 
 if __name__ == "__main__":
     ctk.set_appearance_mode("dark")
