@@ -1,6 +1,6 @@
 # [ATUALIZAÇÕES:](./UPDATES.md#vers%C3%A3o-10---01122023)
 ## VERSÃO 1.4 - 09/06/2025:
-* ✅Arquivos ocultos e de sistema são ignorados automaticamente durante o processo de renomeação — mesmo que estejam visíveis no Explorador do Windows.
+* ✅Arquivos ocultos e de sistema são ignorados automaticamente durante o processo — mesmo que estejam visíveis no Explorador do Windows.
 ---
 
 ## VERSÃO 1.3 - 05/06/2025:
