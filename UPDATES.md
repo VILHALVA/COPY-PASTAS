@@ -1,4 +1,5 @@
 # [ATUALIZAÇÕES:](./UPDATES.md#vers%C3%A3o-10---01122023)
+
 ## VERSÃO 1.4 - 09/06/2025:
 * ✅Arquivos ocultos e de sistema são ignorados automaticamente durante o processo — mesmo que estejam visíveis no Explorador do Windows.
 ---
@@ -10,13 +11,18 @@
 ---
 
 ## VERSÃO 1.2 - 20/05/2025:
-* ✅Adicionados botões de filtro por tipo (MP3, TODOS, JSON, TXT) e novos modos de listagem com contagens personalizadas por categoria.
-* ✅O aplicativo "COPY NAME" foi apagado. 
+* ✅Adicionados botões de filtro por tipo (`MP3`, `TODOS`, `JSON`, `TXT`) e novos modos de listagem com contagens personalizadas por categoria.
+* ✅O aplicativo "COPY NAME" (01/12/2023) foi apagado. 
 ---
 
 ## VERSÃO 1.1 - 04/09/2024:
-* ✅**HOJE FOI LANÇADO UM NOVO APLICATIVO:** O aplicativo "COPY PASTAS" é uma ferramenta simples e intuitiva, criada com a biblioteca Tkinter em Python, para listar e gerenciar caminhos de diretórios e subdiretórios, exibindo a quantidade de arquivos .mp3 em cada pasta. Além disso, o aplicativo oferece estatísticas detalhadas sobre a quantidade de pastas, músicas e o espaço de armazenamento usado, livre e total do diretório selecionado. A principal funcionalidade é listar os caminhos dos diretórios de um caminho raiz selecionado e exibi-los de forma organizada, incluindo o número de músicas em cada diretório, permitindo fácil cópia desses caminhos para a área de transferência.
+* ✅**O APLICATIVO FOI LANÇADO OFICIALMENTE:** O aplicativo "COPY PASTAS" é uma ferramenta simples e intuitiva, criada com a biblioteca Tkinter em Python, para listar e gerenciar caminhos de diretórios e subdiretórios, exibindo a quantidade de arquivos .mp3 em cada pasta. Além disso, o aplicativo oferece estatísticas detalhadas sobre a quantidade de pastas, músicas e o espaço de armazenamento usado, livre e total do diretório selecionado. A principal funcionalidade é listar os caminhos dos diretórios de um caminho raiz selecionado e exibi-los de forma organizada, incluindo o número de músicas em cada diretório, permitindo fácil cópia desses caminhos para a área de transferência.
 ---
 
 ## VERSÃO 1.0 - 01/12/2023:
 * ✅**PRECISEI CRIAR OUTRO APLICATIVO PARA DESKTOP:** Para que eu possa colocar mais de 200 músicas sugeridas dentro de uma array no buscador de BOAS MÚSICAS, precisei automatizar essa tarefa (Eu não ia escrever o nome de cada música na mão, né). Então eu automatizei essa tarefa chata: Criei um executável que você seleciona um diretório e ele salva o nome de todos os arquivos no campo (Funciona pra pastas também), depois só bastou copiar dentro da array do meu script.js de sugestão de músicas!
+* ✅**Em `18/12/2023`, foram feitas algumas melhorias no aplicativo (1.0.1):**
+  * 🔹Adição de um rodapé com meu nome e meu username do GitHub.
+  * 🔹Refatoração e revisão do código para maior clareza e eficiência.
+  * 🔹Inclusão do nome e do ícone oficial do aplicativo.
+  * 🔹Alteração no parâmetro de compilação, eliminando a necessidade de o usuário ter pacotes do módulo `_internal` instalados no sistema. Agora, o aplicativo é totalmente autônomo.
