@@ -1,4 +1,13 @@
 # [ATUALIZAÇÕES:](./UPDATES.md#vers%C3%A3o-10---01122023)
+## VERSÃO 1.5 - 16/09/2025:
+* ✅Nesta atualização, os dois aplicativos foram integrados em uma única interface usando o recurso de **abas**, oferecendo uma navegação mais organizada entre diferentes funcionalidades. Além da aba `EXPLORADOR`, que preserva as funcionalidades do aplicativo original `COPY PASTAS`, foi adicionada a aba **“COMPARADOR”**, que permite identificar rapidamente quais pastas ou arquivos estão faltando entre dois diretórios selecionados.
+* ✅**Sobre o COMPARADOR:**
+  * 🔹Adicionado o botão **COPIAR** para enviar o resultado diretamente para a área de transferência.
+  * 🔹Implementado um sistema de validação, onde os botões ficam **desabilitados** em determinados estados.
+  * 🔹O aplicativo antigo **"COMPARADOR DE FILES"** foi apagado.
+* ✅Ambas agora possuem cores mais escuras e harmoniosas.
+* ✅A seção de **footer** foi removido de ambos.
+---
 
 ## VERSÃO 1.4 - 09/06/2025:
 * ✅Arquivos ocultos e de sistema são ignorados automaticamente durante o processo — mesmo que estejam visíveis no Explorador do Windows.

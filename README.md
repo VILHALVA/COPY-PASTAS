@@ -1,80 +1,38 @@
 # COPY PASTAS
-🎈COPIE O NOME DE TODOS OS ARQUIVOS, DIRETÓRIOS E SUBDIRETÓRIOS.
+👨‍🏫COPIE O NOME DE TODOS OS ARQUIVOS, DIRETÓRIOS E SUBDIRETÓRIOS E/OU SELECIONE DUAS PASTAS E VERIFICAR SE TODAS AS SUBPASTAS DO DIRETÓRIO 1 (PAI) TAMBÉM EXISTEM NO DIRETÓRIO 2 (FILHO).
 
-<img src="FOTO.png" align="center" width="500"> <br>
+<img src="./IMAGENS/FOTO_01.png" align="center" width="500"> <br>
+<img src="./IMAGENS/FOTO_02.png" align="center" width="500"> <br>
 
 ## DESCRIÇÃO:
-O aplicativo **"COPY PASTAS"** é uma ferramenta simples e intuitiva, criada com a biblioteca **CustomTkinter** em Python, para listar e gerenciar caminhos de diretórios e subdiretórios, exibindo a quantidade de arquivos em cada pasta. O usuário pode escolher entre quatro tipos de exibição: apenas arquivos `.mp3`, todos os arquivos (incluindo `.mp3`), nomes em formato JSON ou TXT.
-
-Além disso, o aplicativo oferece:
-
-* Estatísticas detalhadas sobre a quantidade de pastas, arquivos e o espaço de armazenamento usado, livre e total do diretório selecionado.
-* Comportamento inteligente dos botões: **"GERAR"** só é habilitado após a seleção de um diretório, e os botões **"LIMPAR"** e **"COLAR"** são ativados apenas após a geração do texto.
-* O botão **"COPIAR"** exibe uma notificação visual do sistema (Windows/Linux) informando que o conteúdo foi copiado para a área de transferência.
+O **COPY PASTAS** é um aplicativo para Windows desenvolvido em Python com `customtkinter`, que combina duas funcionalidades em um único ambiente através de abas: **EXPLORADOR** e **COMPARADOR**.
 
 ## FUNCIONALIDADES:
-1. **Selecionar Diretório**
-   * **Botão "SELECIONAR"**: Abre uma janela para o usuário escolher o diretório base. O caminho é exibido em um campo de texto.
+1. **Aba EXPLORADOR (🔍 EXPLORAR):**
+   * Permite selecionar qualquer diretório no sistema.
+   * Lista arquivos e pastas contidos no diretório selecionado.
+   * Oferece filtros por tipo: `MP3`, `TODOS`, `JSON` e `TXT`.
+   * Gera listas formatadas de arquivos, incluindo estatísticas de memória usada, memória livre e total, além do total de pastas e arquivos/músicas.
+   * Permite copiar o conteúdo gerado para a área de transferência e limpar o campo de exibição.
+   * Interface intuitiva com botões de seleção, geração e cópia, além de notificações visuais (“toasts”) ao copiar o texto.
 
-2. **Escolher Tipo de Arquivo**
-   * **Botões de Seleção (MP3, TODOS, JSON, TXT)**: Permitem definir como os arquivos serão listados:
-      * **MP3**: Lista apenas arquivos `.mp3`.
-      * **TODOS**: Lista todos os arquivos, inclusive `.mp3`.
-      * **JSON**: Exibe somente os nomes (sem caminhos) em formato de array JSON.
-      * **TXT**: Exibe somente os nomes (sem caminhos) como lista simples de texto.
+2. **Aba COMPARADOR (📂 COMPARAR):**
+   * Permite comparar dois diretórios, chamados de “DIRETÓRIO 1 (PAI)” e “DIRETÓRIO 2 (FILHO)”.
+   * Lista pastas e arquivos que existem no diretório pai, mas estão ausentes no diretório filho.
+   * Identifica subpastas e arquivos faltantes, mostrando-os de forma organizada na tela.
+   * Indica quando os diretórios estão completamente sincronizados.
+   * Permite copiar ou limpar os resultados da comparação de forma rápida.
 
-3. **Gerar Lista de Diretórios e Arquivos**
-   * **Botão "GERAR"**:
-      * Fica desabilitado até um diretório ser selecionado.
-      * Processa a estrutura do diretório e lista os arquivos conforme o tipo selecionado.
-      * Organiza os diretórios com numeração padronizada.
-      * **Formato da Listagem** (MP3 ou TODOS):
-      `{01 - 01} <-> PASTA/SUBPASTA <-> {X MUSICAS}` ou `{X ARQUIVOS}`
-      * **Exemplo**:
-
-      ```
-      {01 - 01} <-> PASTA 1/SUBPASTA 1 <-> {5 MUSICAS}
-      {02 - 06} <-> PASTA 1/SUBPASTA 2 <-> {2 MUSICAS}
-      {03 - 08} <-> PASTA 2/SUBPASTA <-> {5 MUSICAS}
-      {04 - 13} <-> PASTA 3 <-> {2 MUSICAS}
-      ```
-      * Ignora acentos nos nomes e a pasta `System Volume Information`.
-
-4. **Exibir Estatísticas**
-   * Após a geração da lista, exibe:
-
-   * **TOTAL DE PASTAS**
-   * **TOTAL DE MUSICAS/ARQUIVOS** (conforme o tipo selecionado)
-   * **MEMÓRIA USADA, LIVRE e TOTAL** da unidade de armazenamento
-   * **Formato**:
-
-   ```
-   =============================
-               ESTATISTICAS:
-   =============================
-   TOTAL DE PASTAS: 10
-   TOTAL DE ARQUIVOS: 171
-   MEMÓRIA USADA: 5955 MB
-   MEMÓRIA LIVRE: 2108 MB
-   TOTAL DE MEMÓRIA: 8064 MB
-   =============================
-   =============================
-   ```
-
-5. **Copiar para a Área de Transferência**
-   * **Botão "COPIAR"**:
-      * Copia o conteúdo da área de texto (lista + estatísticas).
-      * Exibe a mensagem do sistema informando que o conteúdo foi copiado com sucesso.
-
-6. **Limpar Texto**
-   * **Botão "LIMPAR"**:
-      * Apaga o conteúdo atual exibido na tela.
-      * Só é ativado após a geração do texto.
+## RECURSOS EXTRAS:
+* Interface moderna com abas coloridas e arredondadas, usando tons escuros e botões destacados em verde e azul.
+* Sistema de “toasts” para alertas visuais quando uma ação é realizada, como copiar para a área de transferência.
+* Suporte a pastas ocultas e arquivos de sistema, ignorando-os na listagem e comparação.
+* Estatísticas detalhadas sobre memória e quantidade de arquivos, facilitando o gerenciamento de grandes diretórios.
 
 ## POR QUE CRIEI ESTE APP?
-Após usar o [DRIVESORT](https://www.anerty.net/software/file/DriveSort/) para manter a ordem dos diretórios e subdiretórios do meu PC em sistemas embarcados, percebi a necessidade de criar um novo aplicativo que armazenasse e listasse os nomes desses diretórios em ordem.
+* Após usar o [DRIVESORT](https://www.anerty.net/software/file/DriveSort/) para manter a ordem dos diretórios e subdiretórios do meu PC em sistemas embarcados, percebi a necessidade de criar um novo aplicativo que armazenasse e listasse os nomes desses diretórios em ordem. Eu utilizo meus pendrives em diversos sistemas embarcados, como caixas de som e DVDs, que geralmente não têm tela, apenas saídas de áudio. Isso tornava cansativo ter que adivinhar ou memorizar o número dos diretórios/faixas de cada álbum.
 
-Eu utilizo meus pendrives em diversos sistemas embarcados, como caixas de som e DVDs, que geralmente não têm tela, apenas saídas de áudio. Isso tornava cansativo ter que adivinhar ou memorizar o número dos diretórios/faixas de cada álbum.
+* O principal motivo foi garantir que todos os diretórios e arquivos presentes no meu **Desktop** estivessem devidamente **sincronizados com meus pendrives**. Com ele, consigo identificar rapidamente se há algo faltando — seja uma pasta inteira ou apenas um arquivo — e até mesmo detectar **nomes divergentes** entre os diretórios. Ele já me **salvou de inúmeros problemas com backups**, evitando perda de dados importantes por falta de organização ou cópias incompletas.
 
 ## EXECUTANDO O PROJETO:
 1. **Instale as bibliotecas necessárias:** Antes de executar o app, certifique-se de instalar todas as dependências necessárias. No terminal, execute o seguinte comando para instalar as dependências listadas no arquivo requirements.txt em `CODIGO`:
@@ -89,39 +47,18 @@ Eu utilizo meus pendrives em diversos sistemas embarcados, como caixas de som e 
    python CODIGO.py
    ```
 
-3. **Selecione o Diretório**:
-   * Clique no botão **"SELECIONAR"** para abrir a janela de escolha de diretório. Selecione o diretório base desejado. O caminho será exibido no campo de entrada.
-   * O botão **"GERAR"** só será habilitado após a seleção de um diretório válido.
+3. **EXPLORADOR:**
+   * Abra a aba “🔍 EXPLORAR”.
+   * Clique em **SELECIONAR** e escolha um diretório.
+   * Escolha o tipo de arquivos que deseja listar (`MP3`, `TODOS`, `JSON` ou `TXT`).
+   * Clique em **GERAR** para visualizar a lista.
+   * Copie ou limpe o conteúdo usando os botões correspondentes.
 
-4. **Escolha o Tipo de Listagem**:
-   * Antes de gerar a lista, selecione o tipo de conteúdo que deseja listar usando um dos botões:
-
-     * **MP3**: Apenas arquivos `.mp3`.
-     * **TODOS**: Todos os arquivos.
-     * **JSON**: Apenas os nomes dos arquivos em formato de array JSON.
-     * **TXT**: Apenas os nomes dos arquivos em formato de lista simples (um por linha).
-
-5. **Gerar a Lista**:
-   * Clique no botão **"GERAR"** para processar o diretório. O aplicativo percorrerá os subdiretórios e exibirá a listagem conforme o tipo selecionado.
-   * Para MP3 ou TODOS, cada linha exibirá a contagem de arquivos no formato:
-
-     ```
-     {01 - XX} <-> PASTA/SUBPASTA <-> {X MUSICAS/ARQUIVOS}
-     ```
-   * Abaixo da listagem, serão exibidas as estatísticas de:
-
-     * Total de pastas
-     * Total de arquivos (ou músicas)
-     * Espaço usado, livre e total do armazenamento
-   * Os botões **"LIMPAR"** e **"COLAR"** só serão habilitados após essa geração.
-
-6. **Copie a Lista**:
-   * Após a geração, clique no botão **"COPIAR"** para copiar todo o conteúdo exibido (lista e estatísticas) para a área de transferência.
-   * Uma notificação do sistema será exibida informando que o conteúdo foi copiado com sucesso.
-
-7. **Limpe o Texto**:
-   * Para limpar a área de texto e começar novamente, clique no botão **"LIMPAR"**.
-   * Esse botão ficará habilitado somente após a geração da lista.
+4. **COMPARADOR:**
+   * Abra a aba “📂 COMPARAR”.
+   * Selecione o **DIRETÓRIO 1 (PAI)** e em seguida o **DIRETÓRIO 2 (FILHO)**.
+   * O aplicativo mostrará automaticamente os arquivos e pastas ausentes no diretório filho.
+   * Copie ou limpe os resultados conforme necessário.
 
 ## SOBRE O EXECUTAVEL E O INSTALADOR:
 ### 1. EXECUTANDO O INSTALADOR:

@@ -7,19 +7,32 @@ from tkinter import filedialog
 import threading
 import time
 
-class NomeArquivosApp:
-    def __init__(self, root):
-        self.root = root
-        self.root.title("COPY PASTAS")
+def is_oculto_ou_sistema(path):
+    if os.name == "nt":  
+        try:
+            atributos = ctypes.windll.kernel32.GetFileAttributesW(str(path))
+            if atributos == -1:
+                return False
+            FILE_ATTRIBUTE_HIDDEN = 0x2
+            FILE_ATTRIBUTE_SYSTEM = 0x4
+            return bool(atributos & (FILE_ATTRIBUTE_HIDDEN | FILE_ATTRIBUTE_SYSTEM))
+        except Exception:
+            return False
+    else:  
+        return os.path.basename(path).startswith(".")
 
-        self.label_dir = ctk.CTkLabel(root, text="COPY PASTAS", font=("Arial", 32, "bold"))
+class NomeArquivosApp:
+    def __init__(self, parent):
+        self.parent = parent
+
+        self.label_dir = ctk.CTkLabel(parent, text="EXPLORADOR", font=("Arial", 32, "bold"))
         self.label_dir.pack(pady=10)
 
         self.dir_path = ctk.StringVar(value="SELECIONE UM DIRETÓRIO!")
-        self.entry_dir = ctk.CTkEntry(root, textvariable=self.dir_path, state="readonly", justify="center")
+        self.entry_dir = ctk.CTkEntry(parent, textvariable=self.dir_path, state="readonly", justify="center")
         self.entry_dir.pack(fill="x", padx=20, pady=(0, 10))
 
-        dir_frame = ctk.CTkFrame(root, fg_color="transparent")
+        dir_frame = ctk.CTkFrame(parent, fg_color="transparent")
         dir_frame.pack(pady=(0, 10))
 
         self.btn_select_dir = ctk.CTkButton(dir_frame, text="SELECIONAR", command=self.select_directory)
@@ -31,7 +44,7 @@ class NomeArquivosApp:
         self.tipo = ctk.StringVar(value="MP3")
         tipos = ["MP3", "TODOS", "JSON", "TXT"]
 
-        tipo_frame = ctk.CTkFrame(root)
+        tipo_frame = ctk.CTkFrame(parent)
         tipo_frame.pack(pady=10, anchor="center")  
 
         botoes_frame = ctk.CTkFrame(tipo_frame, fg_color="transparent")
@@ -40,25 +53,15 @@ class NomeArquivosApp:
         for t in tipos:
             ctk.CTkRadioButton(botoes_frame, text=t, variable=self.tipo, value=t).pack(side="left", padx=10)
 
-        self.text_area = ctk.CTkTextbox(root)
+        self.text_area = ctk.CTkTextbox(parent)
         self.text_area.pack(expand=True, fill="both", padx=20, pady=(0, 10))
 
-        button_frame = ctk.CTkFrame(root, fg_color="transparent")
+        button_frame = ctk.CTkFrame(parent, fg_color="transparent")
         button_frame.pack(pady=(0, 10))
         self.btn_copy = ctk.CTkButton(button_frame, text="COPIAR", command=self.copy_names, state="disabled")
         self.btn_copy.pack(side="left", padx=5)
         self.btn_clear = ctk.CTkButton(button_frame, text="LIMPAR", command=self.clear_text, state="disabled")
         self.btn_clear.pack(side="left", padx=5)
-
-        self.footer_label = ctk.CTkLabel(
-            root,
-            text="APP CRIADO PELO VILHALVA\nGITHUB: @VILHALVA",
-            text_color="white",
-            bg_color="gray",
-        )
-        self.footer_label.pack(side="bottom", fill="x", pady=(10, 0))
-
-        self.root.after(0, lambda: self.root.state('zoomed'))
 
     def select_directory(self):
         dir_path = filedialog.askdirectory()
@@ -190,12 +193,12 @@ class NomeArquivosApp:
         self.btn_clear.configure(state="normal")
 
     def show_toast(self, msg="Texto copiado!", duration=3):
-        toast = ctk.CTkToplevel(self.root)
+        toast = ctk.CTkToplevel(self.parent)
         toast.overrideredirect(True)
         toast.attributes("-topmost", True)
 
-        x = self.root.winfo_x() + 100
-        y = self.root.winfo_y() + 100
+        x = self.parent.winfo_x() + 100
+        y = self.parent.winfo_y() + 100
         toast.geometry(f"250x50+{x}+{y}")
 
         label = ctk.CTkLabel(toast, text=msg, bg_color="black", text_color="white")
@@ -208,9 +211,9 @@ class NomeArquivosApp:
 
     def copy_names(self):
         names = self.text_area.get("1.0", "end")
-        self.root.clipboard_clear()
-        self.root.clipboard_append(names)
-        self.root.update()
+        self.parent.clipboard_clear()
+        self.parent.clipboard_append(names)
+        self.parent.update()
         self.show_toast()
 
     def clear_text(self):
@@ -218,23 +221,171 @@ class NomeArquivosApp:
         self.btn_copy.configure(state="disabled")
         self.btn_clear.configure(state="disabled")
 
-def is_oculto_ou_sistema(path):
-    if os.name == "nt":  
-        try:
-            atributos = ctypes.windll.kernel32.GetFileAttributesW(str(path))
-            if atributos == -1:
-                return False
-            FILE_ATTRIBUTE_HIDDEN = 0x2
-            FILE_ATTRIBUTE_SYSTEM = 0x4
-            return bool(atributos & (FILE_ATTRIBUTE_HIDDEN | FILE_ATTRIBUTE_SYSTEM))
-        except Exception:
-            return False
-    else: 
-        return os.path.basename(path).startswith(".")
+class PastaComparerApp:
+    def __init__(self, parent):
+        self.parent = parent
+
+        self.diretorio1 = ""
+        self.diretorio2 = ""
+
+        self.label_titulo = ctk.CTkLabel(parent, text="COMPARADOR", font=("Arial", 32, "bold"))
+        self.label_titulo.pack(pady=(20, 10))
+
+        frame_top = ctk.CTkFrame(parent)
+        frame_top.pack(pady=10, padx=20, fill="x")
+
+        frame_botoes = ctk.CTkFrame(frame_top)
+        frame_botoes.pack(anchor="center")
+
+        self.btn_dir1 = ctk.CTkButton(frame_botoes, text="DIRETÓRIO 1", command=self.selecionar_diretorio1)
+        self.btn_dir1.pack(side="left", padx=10)
+
+        self.btn_dir2 = ctk.CTkButton(frame_botoes, text="DIRETÓRIO 2", command=self.selecionar_diretorio2, state="disabled")
+        self.btn_dir2.pack(side="left", padx=10)
+
+        self.result_box = ctk.CTkTextbox(parent, width=600, height=250)
+        self.result_box.pack(pady=10, padx=20, expand=True, fill="both")
+
+        frame_bottom = ctk.CTkFrame(parent)
+        frame_bottom.pack(pady=10)
+
+        self.btn_copiar = ctk.CTkButton(frame_bottom, text="COPIAR", command=self.copy_names, state="disabled")
+        self.btn_copiar.pack(side="left", padx=10)
+
+        self.btn_limpar = ctk.CTkButton(frame_bottom, text="LIMPAR", command=self.limpar_resultado, state="disabled")
+        self.btn_limpar.pack(side="left", padx=10)
+
+    def show_toast(self, msg="Texto copiado!", duration=3):
+        toast = ctk.CTkToplevel(self.parent)
+        toast.overrideredirect(True)
+        toast.attributes("-topmost", True)
+
+        x = self.parent.winfo_x() + 100
+        y = self.parent.winfo_y() + 100
+        toast.geometry(f"250x50+{x}+{y}")
+
+        label = ctk.CTkLabel(toast, text=msg, fg_color="black", text_color="white")
+        label.pack(expand=True, fill="both")
+
+        threading.Thread(
+            target=lambda: (time.sleep(duration), toast.destroy()),
+            daemon=True
+        ).start()
+
+    def copy_names(self):
+        names = self.result_box.get("1.0", "end").strip()
+        if names:
+            self.parent.clipboard_clear()
+            self.parent.clipboard_append(names)
+            self.parent.update()
+            self.show_toast("Texto copiado!")
+
+    def selecionar_diretorio1(self):
+        self.diretorio1 = filedialog.askdirectory(title="SELECIONE O DIRETÓRIO 1 (PAI)")
+        if self.diretorio1:
+            self.result_box.insert("end", f"DIRETÓRIO 1 (PAI): {self.diretorio1}\n")
+            self.btn_dir2.configure(state="normal")
+        self.comparar_pastas()
+
+    def selecionar_diretorio2(self):
+        self.diretorio2 = filedialog.askdirectory(title="SELECIONE O DIRETÓRIO 2 (FILHO)")
+        if self.diretorio2:
+            self.result_box.insert("end", f"DIRETÓRIO 2 (FILHO): {self.diretorio2}\n\n")
+        self.comparar_pastas()
+
+    def listar_subpastas(self, raiz):
+        subpastas = set()
+        for dirpath, dirnames, _ in os.walk(raiz):
+            dirnames[:] = [d for d in dirnames if not is_oculto_ou_sistema(os.path.join(dirpath, d))]
+            for dirname in dirnames:
+                caminho_relativo = os.path.relpath(os.path.join(dirpath, dirname), raiz)
+                subpastas.add(caminho_relativo.replace("\\", "/"))
+        return subpastas
+
+    def listar_arquivos(self, raiz):
+        arquivos = set()
+        for dirpath, _, filenames in os.walk(raiz):
+            for filename in filenames:
+                caminho_completo = os.path.join(dirpath, filename)
+                if not is_oculto_ou_sistema(caminho_completo):
+                    caminho_relativo = os.path.relpath(caminho_completo, raiz)
+                    arquivos.add(caminho_relativo.replace("\\", "/"))
+        return arquivos
+
+    def comparar_pastas(self):
+        if not self.diretorio1 or not self.diretorio2:
+            return
+
+        pastas1 = self.listar_subpastas(self.diretorio1)
+        pastas2 = self.listar_subpastas(self.diretorio2)
+
+        arquivos1 = self.listar_arquivos(self.diretorio1)
+        arquivos2 = self.listar_arquivos(self.diretorio2)
+
+        faltando_pastas = pastas1 - pastas2
+        faltando_arquivos = arquivos1 - arquivos2
+
+        if faltando_pastas:
+            self.result_box.insert("end", "📁 PASTAS/SUBPASTAS FALTANDO NO DIRETÓRIO 2:\n\n")
+            for pasta in sorted(faltando_pastas):
+                self.result_box.insert("end", f"- {pasta}/\n")
+            self.result_box.insert("end", "\n")
+
+        if faltando_arquivos:
+            self.result_box.insert("end", "📄 ARQUIVOS FALTANDO NO DIRETÓRIO 2:\n\n")
+            for arquivo in sorted(faltando_arquivos):
+                self.result_box.insert("end", f"- {arquivo}\n")
+            self.result_box.insert("end", "\n")
+
+        if not faltando_pastas and not faltando_arquivos:
+            self.result_box.insert("end", "✅ NENHUMA PASTA OU ARQUIVO FALTANDO. OS DIRETÓRIOS ESTÃO SINCRONIZADOS!\n")
+
+        self.btn_dir1.configure(state="disabled")
+        self.btn_dir2.configure(state="disabled")
+        self.btn_copiar.configure(state="normal")
+        self.btn_limpar.configure(state="normal")
+
+    def limpar_resultado(self):
+        self.result_box.delete("1.0", "end")
+        self.btn_copiar.configure(state="disabled")
+        self.btn_limpar.configure(state="disabled")
+        self.btn_dir1.configure(state="normal")
+        self.btn_dir2.configure(state="disabled")
+
+class MainApp(ctk.CTk):
+    def __init__(self):
+        super().__init__()
+        self.title("COPY PASTAS")
+        self.after(100, lambda: self.state("zoomed"))
+
+        tabview = ctk.CTkTabview(
+            self,
+            width=1100,
+            height=600,
+            corner_radius=15,  
+            border_width=2,
+            border_color="#222222",
+            fg_color="#0D0D0D",
+            segmented_button_fg_color="#333333",
+            segmented_button_selected_color="#28a745", 
+            segmented_button_selected_hover_color="#3ac169",  
+            segmented_button_unselected_color="#007bff",  
+            segmented_button_unselected_hover_color="#339cff"  
+        )
+        tabview.pack(expand=True, fill="both", padx=20, pady=20)
+
+        abas = {
+            "🔍 EXPLORAR": NomeArquivosApp,
+            "📂 COMPARAR": PastaComparerApp
+        }
+
+        for nome, app_class in abas.items():
+            tab = tabview.add(nome)              
+            tab.grid_columnconfigure(0, weight=1)  
+            app_class(tab)                       
 
 if __name__ == "__main__":
     ctk.set_appearance_mode("dark")
     ctk.set_default_color_theme("blue")
-    root = ctk.CTk()
-    app = NomeArquivosApp(root)
-    root.mainloop()
+    app = MainApp()
+    app.mainloop()
