@@ -4,7 +4,7 @@
 * ✅**Sobre o COMPARADOR:**
   * 🔹Adicionado o botão **COPIAR** para enviar o resultado diretamente para a área de transferência.
   * 🔹Implementado um sistema de validação, onde os botões ficam **desabilitados** em determinados estados.
-  * 🔹O aplicativo antigo **"COMPARADOR DE FILES"** foi apagado.
+  * 🔹O aplicativo antigo **"COMPARADOR DE FILES"** (06/06/2025) foi apagado.
 * ✅Ambas agora possuem cores mais escuras e harmoniosas.
 * ✅A seção de **footer** foi removido de ambos.
 ---
