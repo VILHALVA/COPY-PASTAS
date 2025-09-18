@@ -21,7 +21,7 @@ def is_oculto_ou_sistema(path):
     else:  
         return os.path.basename(path).startswith(".")
 
-class NomeArquivosApp:
+class Explorador:
     def __init__(self, parent):
         self.parent = parent
 
@@ -221,7 +221,7 @@ class NomeArquivosApp:
         self.btn_copy.configure(state="disabled")
         self.btn_clear.configure(state="disabled")
 
-class PastaComparerApp:
+class Comparador:
     def __init__(self, parent):
         self.parent = parent
 
@@ -285,13 +285,12 @@ class PastaComparerApp:
         if self.diretorio1:
             self.result_box.insert("end", f"DIRETÓRIO 1 (PAI): {self.diretorio1}\n")
             self.btn_dir2.configure(state="normal")
-        self.comparar_pastas()
 
     def selecionar_diretorio2(self):
         self.diretorio2 = filedialog.askdirectory(title="SELECIONE O DIRETÓRIO 2 (FILHO)")
         if self.diretorio2:
             self.result_box.insert("end", f"DIRETÓRIO 2 (FILHO): {self.diretorio2}\n\n")
-        self.comparar_pastas()
+            self.comparar_pastas()
 
     def listar_subpastas(self, raiz):
         subpastas = set()
@@ -351,6 +350,8 @@ class PastaComparerApp:
         self.btn_limpar.configure(state="disabled")
         self.btn_dir1.configure(state="normal")
         self.btn_dir2.configure(state="disabled")
+        self.diretorio1 = ""
+        self.diretorio2 = "" 
 
 class MainApp(ctk.CTk):
     def __init__(self):
@@ -375,8 +376,8 @@ class MainApp(ctk.CTk):
         tabview.pack(expand=True, fill="both", padx=20, pady=20)
 
         abas = {
-            "🔍 EXPLORAR": NomeArquivosApp,
-            "📂 COMPARAR": PastaComparerApp
+            "🔍 EXPLORAR": Explorador,
+            "📂 COMPARAR": Comparador
         }
 
         for nome, app_class in abas.items():
