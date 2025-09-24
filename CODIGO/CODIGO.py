@@ -217,7 +217,9 @@ class Explorador:
         self.show_toast()
 
     def clear_text(self):
+        self.dir_path.set("SELECIONE UM DIRETÓRIO NOVAMENTE!")
         self.text_area.delete("1.0", "end")
+        self.btn_generate.configure(state="disabled")
         self.btn_copy.configure(state="disabled")
         self.btn_clear.configure(state="disabled")
 
@@ -353,7 +355,7 @@ class Comparador:
         self.diretorio1 = ""
         self.diretorio2 = "" 
 
-class MainApp(ctk.CTk):
+class Main(ctk.CTk):
     def __init__(self):
         super().__init__()
         self.title("COPY PASTAS")
@@ -388,5 +390,5 @@ class MainApp(ctk.CTk):
 if __name__ == "__main__":
     ctk.set_appearance_mode("dark")
     ctk.set_default_color_theme("blue")
-    app = MainApp()
+    app = Main()
     app.mainloop()
