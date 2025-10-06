@@ -189,6 +189,8 @@ class Explorador:
             "=============================\n"
         )
         self.text_area.insert("end", result_text + estatisticas)
+        self.btn_select_dir.configure(state="disabled")
+        self.btn_generate.configure(state="disabled")
         self.btn_copy.configure(state="normal")
         self.btn_clear.configure(state="normal")
 
@@ -219,7 +221,7 @@ class Explorador:
     def clear_text(self):
         self.dir_path.set("SELECIONE UM DIRETÓRIO NOVAMENTE!")
         self.text_area.delete("1.0", "end")
-        self.btn_generate.configure(state="disabled")
+        self.btn_select_dir.configure(state="normal")
         self.btn_copy.configure(state="disabled")
         self.btn_clear.configure(state="disabled")
 
