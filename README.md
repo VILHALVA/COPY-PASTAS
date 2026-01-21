@@ -29,7 +29,7 @@ O **COPY PASTAS** é um aplicativo para Windows desenvolvido em Python com `cust
 * Suporte a pastas ocultas e arquivos de sistema, ignorando-os na listagem e comparação.
 * Estatísticas detalhadas sobre memória e quantidade de arquivos, facilitando o gerenciamento de grandes diretórios.
 
-## ÍNDICE NUMÉRICO:
+## ÍNDICE NUMÉRICO NO **MP3** E **TODOS**:
 ### CONCEITO:
 É um **conjunto de números de referência** que serve para **identificar e organizar as pastas e as faixas** na ordem em que aparecem no resultado.
 
@@ -157,4 +157,5 @@ Ele **não é nome de pasta**, nem **quantidade de arquivos**.
 ## CREDITOS E MAIS:
 - [PROJETO CRIADO PELO VILHALVA](https://github.com/VILHALVA)
 - [CLIQUE AQUI PARA VER O HISTÓRICO DE ATUALIZAÇÕES](./UPDATES.md)
+
 
