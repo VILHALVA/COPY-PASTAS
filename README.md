@@ -29,6 +29,40 @@ O **COPY PASTAS** é um aplicativo para Windows desenvolvido em Python com `cust
 * Suporte a pastas ocultas e arquivos de sistema, ignorando-os na listagem e comparação.
 * Estatísticas detalhadas sobre memória e quantidade de arquivos, facilitando o gerenciamento de grandes diretórios.
 
+## ÍNDICE NUMÉRICO:
+### CONCEITO:
+É um **conjunto de números de referência** que serve para **identificar e organizar as pastas e as faixas** na ordem em que aparecem no resultado.
+
+Ele **não é nome de pasta**, nem **quantidade de arquivos**.
+É apenas um **identificador visual e sequencial**.
+
+### EXEMPLO:
+#### RESULTADO:
+```
+{01 - 01} <-> Rock/Album1 <-> {10 MUSICAS}
+{02 - 11} <-> Rock/Album2 <-> {08 MUSICAS}
+{03 - 19} <-> Pop/Album1  <-> {12 MUSICAS}
+```
+
+### SIGNIFICADO:
+* **01, 02, 03** → índice numérico da pasta
+  👉 indica **a posição da pasta na lista**
+
+* A primeira pasta é **01**
+
+* A segunda pasta é **02**
+
+* A terceira pasta é **03**
+
+* **01, 11, 19** → índice numérico da faixa inicial
+  👉 indica **em qual número de faixa aquela pasta começa**
+
+* A primeira pasta começa na faixa **01**
+
+* A segunda pasta começa na faixa **11** (a anterior tem 10 músicas)
+
+* A terceira pasta começa na faixa **19** (10 + 8 músicas)
+
 ## POR QUE CRIEI ESTE APP?
 * **EXPLORADOR:** Após usar o [DRIVESORT](https://www.anerty.net/software/file/DriveSort/) para manter a ordem dos diretórios e subdiretórios do meu PC em sistemas embarcados, percebi a necessidade de criar um novo aplicativo que armazenasse e listasse os nomes desses diretórios em ordem. Eu utilizo meus pendrives em diversos sistemas embarcados, como caixas de som e DVDs, que geralmente não têm tela, apenas saídas de áudio. Isso tornava cansativo ter que adivinhar ou memorizar o número dos diretórios/faixas de cada álbum.
 
